@@ -243,12 +243,6 @@ class ProfileGrid extends React.Component {
                                 )
                             })}
 
-                            {/* <h5>projectTitle: ...{projects.projectTitle}</h5>
-                            <p>creator: ...{projects.creator}</p>
-                            <p>startDate: ...{projects.startDate}</p>
-                            <p>deadLine: ...{projects.deadLine}</p>
-                            <p>TODOS: ...{projects.todos}</p>
-                            <p>assignee: ...{projects.assignee}</p> */}
                         </div>
 
                     </div>
