@@ -114,6 +114,7 @@ class ProfileGrid extends React.Component {
 
         console.log(`constructedSTATE:DATA-------\n\nshow_ProjectDetail: ${detailBtn}\n--------\n\nshow_Form: ${formBtn}`)
 
+        
 
 
 
@@ -222,7 +223,7 @@ class ProfileGrid extends React.Component {
                         </Form>
 
                         <div className="details" hidden={detailBtn} >
-                            <h5>projectTitle: ...{projects.projectTitle}</h5>
+                            <h5>projectTitle: ...{projects.projectTitle[0]}</h5>
                             <p>creator: ...{projects.creator}</p>
                             <p>startDate: ...{projects.startDate}</p>
                             <p>deadLine: ...{projects.deadLine}</p>
