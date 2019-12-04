@@ -4,12 +4,12 @@ const ProjectDetails = (props) => {
     console.log(props)
     return(
         <>
-        <h5>projectTitle: ...{props.projectTitle}</h5>
-        <p>creator: ...{props.creator}</p>
-        <p>startDate: ...{props.startDate}</p>
-        <p>deadLine: ...{props.deadLine}</p>
-        <p>TODOS: ...{props.todos}</p>
-        <p>assignee: ...{props.assignee}</p>
+        <h5 >projectTitle: ...</h5>
+        <p>creator: ...</p>
+        <p>startDate: ...</p>
+        <p>deadLine: ...</p>
+        <p>TODOS: ...</p>
+        <p>assignee: ...</p>
         </>
     )
 }

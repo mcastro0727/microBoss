@@ -7,6 +7,7 @@ import API from '../../utils/API';
 import { Form, Button } from 'react-bootstrap'
 import ProjectDetails from '../ProjectDetails'
 import { ProjectList } from '../ProjList'
+import { Route } from 'react-router-dom'
 
 
 class ProfileGrid extends React.Component {
@@ -80,7 +81,8 @@ class ProfileGrid extends React.Component {
 
 
     // method for hide form, show data
-    toggleData = () => {
+    toggleData = (btn) => {
+        console.log(btn.value)
         /** <? insert method to do another AXIOS call to collect the data 
          * in THIS specific function ?> */
         API.getProjects()
@@ -93,6 +95,11 @@ class ProfileGrid extends React.Component {
         console.log(this.state.clickedFBtn);
         console.log(this.state.clickedPDBtn)
     }
+
+    // showData =(resp) => {
+    //     console.log(resp.data)
+    // }
+
     // method for hide data, show form
     toggleForm = () => {
         this.setState({
@@ -137,6 +144,7 @@ class ProfileGrid extends React.Component {
                                         className="btn-warning"
                                         type='button'
                                         key={project.id}
+                                        value={project}
                                         onClick={this.toggleData}>{project.projectTitle}</button>
                                 )
                             })}
@@ -223,12 +231,20 @@ class ProfileGrid extends React.Component {
                         </Form>
 
                         <div className="details" hidden={detailBtn} >
-                            <h5>projectTitle: ...{projects.projectTitle[0]}</h5>
+                            {projects.map((detail) => {
+                                return (
+                                    <Route
+                                     path="/profile"
+                                     render={() => <ProjectDetails props={detail} />}   
+                                     />
+                                )
+                            })}
+                            {/* <h5>projectTitle: ...{projects.projectTitle}</h5>
                             <p>creator: ...{projects.creator}</p>
                             <p>startDate: ...{projects.startDate}</p>
                             <p>deadLine: ...{projects.deadLine}</p>
                             <p>TODOS: ...{projects.todos}</p>
-                            <p>assignee: ...{projects.assignee}</p>
+                            <p>assignee: ...{projects.assignee}</p> */}
                         </div>
 
                     </div>
