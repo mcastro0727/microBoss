@@ -1,15 +1,18 @@
 import React from 'react'
 
-const ProjectDetails = (props) => {
+const ProjectDetails = ({ props }) => {
     console.log(props)
+    
+    
+
     return(
         <>
-        <h5>projectTitle: ...{props.projectTitle}</h5>
-        <p>creator: ...{props.creator}</p>
-        <p>startDate: ...{props.startDate}</p>
-        <p>deadLine: ...{props.deadLine}</p>
-        <p>TODOS: ...{props.todos}</p>
-        <p>assignee: ...{props.assignee}</p>
+        <h5>Project Name:: {props.projectTitle}</h5>
+        <p>Project Creator:: {props.creator}</p>
+        <p>Initial Start Date:: {props.startDate}</p>
+        <p>Deadline:: {props.deadLine}.</p>
+        <p>Project Notes:: {props.todos}.</p>
+        <p>Who's working on this?? ....{props.assignee}.</p>
         </>
     )
 }
