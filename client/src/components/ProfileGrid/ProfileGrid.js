@@ -81,8 +81,9 @@ class ProfileGrid extends React.Component {
 
 
     // method for hide form, show data
-    toggleData = (btn) => {
-        console.log(btn.value)
+    toggleData = (e) => {
+        console.log(e)
+        e.preventDefault()
         /** <? insert method to do another AXIOS call to collect the data 
          * in THIS specific function ?> */
         API.getProjects()
@@ -231,6 +232,8 @@ class ProfileGrid extends React.Component {
                         </Form>
 
                         <div className="details" hidden={detailBtn} >
+                            
+
                             {projects.map((detail) => {
                                 return (
                                     <Route
@@ -239,6 +242,7 @@ class ProfileGrid extends React.Component {
                                      />
                                 )
                             })}
+
                             {/* <h5>projectTitle: ...{projects.projectTitle}</h5>
                             <p>creator: ...{projects.creator}</p>
                             <p>startDate: ...{projects.startDate}</p>
