@@ -17,7 +17,7 @@ class ProfileGrid extends React.Component {
         this.state = {
             userProjects: [],
             clickedPDBtn: true,
-
+            btnPressed: '',
             projectTitle: '',
             creator: '',
             startDate: '',
@@ -78,24 +78,30 @@ class ProfileGrid extends React.Component {
 
     }
 
+    handleButtonClick = (btn) => {
+        console.log(btn.target)
+        console.log({ [Object]: btn.target })
+        const btnTxt = btn.target.firstChild.data
+        const detObj = {
+            [Object]: btnTxt
+        }
+        console.log(detObj)
+
+        this.setState({
+            btnPressed: detObj
+            
+        })
+        console.log(this.state.btnPressed)
+        
+    } 
 
 
     // method for hide form, show data
     toggleData = (e) => {
         //console.log(e.target)
         //console.log(e.target.value)
-        console.log({ [Object]:e.target })
-        console.log({
-            [Object]: e.target.firstChild.data
-        })
-        this.setState({
-            btnPressed: {
-                [Object]: e.target.firstChild.data 
-            } 
-            
-        })
-        console.log(this.state.btnPressed)
-        
+        this.handleButtonClick(e)
+       
         
         //e.preventDefault()
         /** <? insert method to do another AXIOS call to collect the data 
