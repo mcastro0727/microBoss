@@ -28,7 +28,6 @@ class Home extends Component {
           <EpicMenu links={links} />
         </div>
 
-        <h1>Home</h1>
         <ul>
           <Login />
           <br />

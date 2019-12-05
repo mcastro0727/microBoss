@@ -57,37 +57,21 @@ class SignUp extends Component {
             <Row>
               <Col size="md-6">
                 <Jumbotron>
-                  <h2>
+                  <h3>
                     {" "}
                     <button
+                      className="btn btn-success"
                       onClick={e => {
                         this.setState({ isClicked: true });
                       }}
                     >
-                      Sign Up
+                      <p>Sign Up</p>
                     </button>
-                  </h2>
+                  </h3>
                 </Jumbotron>
               </Col>
             </Row>
           </Container>
-          // <div className="level">
-          //   <div className="column is-half">
-          //     <div className="notification is-primary">
-          //       <h2>
-          //         {" "}
-          //         <button
-          //           className="button is-success"
-          //           onClick={e => {
-          //             this.setState({ isClicked: true });
-          //           }}
-          //         >
-          //           Sign Up
-          //         </button>
-          //       </h2>
-          //     </div>
-          //   </div>
-          // </div>
         );
       else
         return (
@@ -96,10 +80,10 @@ class SignUp extends Component {
               <Col size="md-6">
                 <Jumbotron>
                   <div className="wrapper">
-                    <div className="form-wrapper">
-                      <h1>Create Account</h1>
+                    <div className="list">
+                      <h5>Create Account</h5>
                       <form onSubmit={this.handleSubmit} noValidate>
-                        <label htmlFor="Email">Email</label>
+                        <label htmlFor="Email"></label>
                         <input
                           type="text"
                           className=""
@@ -107,55 +91,29 @@ class SignUp extends Component {
                           placeholder=" Your Email Here"
                           name="email"
                         />
-                        <div>
-                          <label htmlFor="Password">Password</label>
+                        <div className="list">
+                          <label htmlFor="Password"></label>
                           <input
-                            type="text"
+                            type="password"
                             className=""
                             id="Password"
                             placeholder=" Create a password"
                             name="email"
                           />
                         </div>
-                        <a href="">Confirm</a>
+                        <button className="btn btn-primary">
+                          <a href="/profile" style={{ color: "white" }}>
+                            Confirm
+                          </a>
+                        </button>
                       </form>
+                      <a href="/">Forget Password?</a>
                     </div>
                   </div>
                 </Jumbotron>
               </Col>
             </Row>
           </Container>
-
-          // <div className="columns">
-          //   <div className="column is-half" padding="50px">
-          //     <div className="field">
-          //       <div className="notification is-primary" style={signUpBox}>
-          //         <label className="labelFor">Email</label>
-          //         <div className="control">
-          //           <input
-          //             className="input"
-          //             type="email"
-          //             placeholder="Email"
-          //           ></input>
-          //         </div>
-
-          //         <div className="column is-half">
-          //           <div className="field">
-          //             <label className="labelFor">Password</label>
-          //             <div className="control">
-          //               <input
-          //                 className="input"
-          //                 type="password"
-          //                 placeholder="Password"
-          //               ></input>
-          //               <a href="">Confirm</a>
-          //             </div>
-          //           </div>
-          //         </div>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
         );
     }
   }
