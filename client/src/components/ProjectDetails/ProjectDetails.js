@@ -2,6 +2,7 @@ import React from 'react'
 
 const ProjectDetails = ({ props }) => {
     console.log(props)
+   
     
     
 
