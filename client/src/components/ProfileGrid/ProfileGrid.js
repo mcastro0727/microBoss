@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Container } from 'react-bootstrap'
 import './style.css'
 import API from '../../utils/API';
-//import UserProjectScope from '../UserProjectScope'
 //import ProjectForm from '../ProjectForm'
 import { Form, Button } from 'react-bootstrap'
 import ProjectDetails from '../ProjectDetails'
@@ -20,7 +19,10 @@ class ProfileGrid extends React.Component {
             deadLine: '',
             todos: '',
             assignee: '',
-            clickedFBtn: true
+            clickedFBtn: true,
+            // SELECT DROPDOWN STATE::
+            selected_button: '',
+            selected_btnID: ''
         }
         console.log(props)
     }
@@ -60,14 +62,14 @@ class ProfileGrid extends React.Component {
             )
             .catch(err => console.log(err));
     }
-    handleButtonClick = (btn) => {
-        
-    } 
+    
+    
     // method for hide form, show data
     toggleData = (e) => {
+        /*
         //console.log(e.target)
         //console.log(e.target.value)
-        console.log({ [Object]:e.target })
+        //console.log({ [Object]:e.target })
         console.log({
             [Object]: e.target.firstChild.data
         })
@@ -77,12 +79,8 @@ class ProfileGrid extends React.Component {
             } 
             
         })
-        console.log(this.state.btnPressed)
-        
-        
-        //e.preventDefault()
-        /** <? insert method to do another AXIOS call to collect the data 
-         * in THIS specific function ?> */
+        //console.log(this.state.btnPressed)
+        */
         API.getProjects()
             .then(res => console.log(res.data))
         this.setState({
@@ -92,10 +90,7 @@ class ProfileGrid extends React.Component {
         console.log(this.state.clickedFBtn);
         console.log(this.state.clickedPDBtn)
     }
-    // showData =(resp) => {
-    //     console.log(resp.data)
-    // }
-    // method for hide data, show form
+    
     toggleForm = () => {
         this.setState({
             clickedFBtn: false,
@@ -104,13 +99,32 @@ class ProfileGrid extends React.Component {
         console.log(this.state.clickedFBtn);
         console.log(this.state.clickedPDBtn)
     }
+    handleSelectChange = (e) => {
+        console.log(e.target.value)
+        this.toggleData(e)
+        
+    }
+    selectedProject = (proj) => {
+        console.log(proj)
+        
+        
+    }
     render() {
+        
         const projects = this.state.userProjects;
         //console.log(projects);
         const detailBtn = this.state.clickedPDBtn;
         const formBtn = this.state.clickedFBtn;
-        console.log(`constructedSTATE:DATA-------\n\nshow_ProjectDetail: ${detailBtn}\n--------\n\nshow_Form: ${formBtn}`)
+        //const BUTTON = this.state.btnPressed;
+        //console.log(BUTTON)
+        //console.log(`constructedSTATE:DATA-------\n\nshow_ProjectDetail: ${detailBtn}\n--------\n\nshow_Form: ${formBtn}`)
         
+        const map_select = projects.map((project) => {
+            return (<option 
+            key={project._id} 
+            value={project._id}>
+            {project.projectTitle}</option>
+            )})
         return (
             <React.Fragment>
                 <Container>
@@ -124,24 +138,30 @@ class ProfileGrid extends React.Component {
                         <br />
                         <br />
                         <ProjectList>
-                            {projects.map((project) => {
+                            {/** PUT MAPPED SELECT HERE */}
+                            <label for='selectItem'>Select Project</label>
+                            <select
+                                onChange={this.handleSelectChange}
+                                onClick={this.selectedProject}
+                                className='selectItem'
+                            >
+                                {map_select}
+                            </select>
+                            {/* {projects.map((project) => {
                                 return (
                                     <button
                                         className="btn-warning"
                                         type='button'
                                         key={project._id}
-                                        value={project}
+                                        value={BUTTON}
                                         onClick={this.toggleData}>{project.projectTitle}</button>
                                 )
-                            })}
+                            })} */}
                         </ProjectList>
                     </div>
                     <div className="middlepane">
-                        <h1 style={{ fontStyle: "italic", fontWeight: "bold", color: "black" }}>Project Form</h1> <br />
-                        {/* \/ this form just needs a 'hidden' property to then be changed
-                            to be able to change the rendered component onClick!!!! 
-                        */}
                         <Form hidden={formBtn}>
+                        <h1 style={{ fontStyle: "italic", fontWeight: "bold", color: "green" }}>Project Form</h1> <br />
                             <Form.Group controlId="formUserName">
                                 <Form.Label>Project Administrator</Form.Label>
                                 <Form.Control
@@ -210,11 +230,16 @@ class ProfileGrid extends React.Component {
                             
                             {projects.map((detail) => {
                                 return (
-                                    <Route
-                                     path="/profile"
-                                     key={detail._id}
-                                     render={() => <ProjectDetails props={detail} />}   
-                                     />
+                                    <div key={detail._id}>
+                                        <ProjectDetails 
+                                            // detail={detail}
+                                            title={detail.projectTitle}
+                                            creator={detail.creator}
+                                            startDate={detail.startDate}
+                                            deadLine={detail.deadLine}
+                                            notes={detail.todos}
+                                            assignee={detail.assignee} />
+                                    </div>    
                                 )
                             })}
                         </div>
@@ -226,7 +251,13 @@ class ProfileGrid extends React.Component {
 }
 export default ProfileGrid
 
-
+/*
+                                    <Route
+                                     path="/profile"
+                                     key={detail._id}
+                                     render={() => <ProjectDetails props={detail} />}   
+                                     />
+*/
 
 
 

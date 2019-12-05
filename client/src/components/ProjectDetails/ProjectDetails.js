@@ -1,19 +1,21 @@
 import React from 'react'
 
-const ProjectDetails = ({ props }) => {
-    console.log(props)
+const ProjectDetails = ({ title, creator, startDate, deadLine, todos, assignee }) => {
+    //console.log(detail)
+    //console.log(key)
    
     
     
 
     return(
         <>
-        <h5>Project Name:: {props.projectTitle}</h5>
-        <p>Project Creator:: {props.creator}</p>
-        <p>Initial Start Date:: {props.startDate}</p>
-        <p>Deadline:: {props.deadLine}.</p>
-        <p>Project Notes:: {props.todos}.</p>
-        <p>Who's working on this?? ....{props.assignee}.</p>
+        <h1 style={{ fontWeight: 'bolder', fontStyle: 'italic', color: 'yellow' }}>Project Details</h1>
+        <h5>Project Name:: {title}</h5>
+        <p>Project Creator:: {creator}</p>
+        <p>Initial Start Date:: {startDate}</p>
+        <p>Deadline:: {deadLine}</p>
+        <p>Project Notes:: {todos}</p>
+        <p>Who's working on this?? {assignee}</p>
         </>
     )
 }
