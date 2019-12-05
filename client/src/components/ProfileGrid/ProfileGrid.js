@@ -82,8 +82,22 @@ class ProfileGrid extends React.Component {
 
     // method for hide form, show data
     toggleData = (e) => {
-        console.log(e)
-        e.preventDefault()
+        //console.log(e.target)
+        //console.log(e.target.value)
+        console.log({ [Object]:e.target })
+        console.log({
+            [Object]: e.target.firstChild.data
+        })
+        this.setState({
+            btnPressed: {
+                [Object]: e.target.firstChild.data 
+            } 
+            
+        })
+        console.log(this.state.btnPressed)
+        
+        
+        //e.preventDefault()
         /** <? insert method to do another AXIOS call to collect the data 
          * in THIS specific function ?> */
         API.getProjects()
@@ -144,7 +158,7 @@ class ProfileGrid extends React.Component {
                                     <button
                                         className="btn-warning"
                                         type='button'
-                                        key={project.id}
+                                        key={project._id}
                                         value={project}
                                         onClick={this.toggleData}>{project.projectTitle}</button>
                                 )
@@ -238,6 +252,7 @@ class ProfileGrid extends React.Component {
                                 return (
                                     <Route
                                      path="/profile"
+                                     key={detail._id}
                                      render={() => <ProjectDetails props={detail} />}   
                                      />
                                 )
