@@ -1,26 +1,37 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 
+const ProjectDetails = ({ props }) => {
+  console.log(props);
 
-const ProjectDetails = ({ title, creator, startDate, deadLine, notes, assignee }) => {
-    //console.log(detail)
-    //console.log(key)
-   
-    
-    
+  return (
+    <React.Fragment>
+      <Table striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>Project Title</th>
+            <th>Creator</th>
+            <th>Start Date</th>
+            <th>Deadine</th>
+            <th>Todos</th>
+            <th>Assignee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{props.projectTitle}</td>
+            <td>{props.creator}</td>
+            <td>{props.startDate}</td>
+            <td>{props.deadLine}</td>
+            <td>{props.todos}</td>
+            <td>{props.assignee}</td>
+          </tr>
+        </tbody>
+      </Table>
+    </React.Fragment>
+  );
+};
 
-    return(
-        <>
-        <h1 style={{ fontWeight: 'bolder', fontStyle: 'italic', color: 'yellow' }}>Project Details</h1>
-        <h5>Project Name:: {title}</h5>
-        <p>Project Creator:: {creator}</p>
-        <p>Initial Start Date:: {startDate}</p>
-        <p>Deadline:: {deadLine}</p>
-        <p>Project Notes:: {notes}</p>
-        <p>Who's working on this?? {assignee}</p>
-        </>
-    )
-}
-export default ProjectDetails
+export default ProjectDetails;
 
