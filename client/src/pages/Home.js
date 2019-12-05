@@ -9,6 +9,8 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 import "../index.css";
 import EpicMenu from "../components/EpicMenu/EpicMenu";
+import { Container, Col, Row } from "../components/Grid/index";
+
 class Home extends Component {
   // STATE
 
@@ -28,11 +30,12 @@ class Home extends Component {
           <EpicMenu links={links} />
         </div>
 
-        <ul>
-          <Login />
-          <br />
-          <Signup />
-        </ul>
+        <Container>
+          <Row>
+              <Login />
+              <Signup />
+          </Row>
+        </Container>
       </React.Fragment>
     );
   }
