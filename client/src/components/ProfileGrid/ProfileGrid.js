@@ -148,16 +148,7 @@ class ProfileGrid extends React.Component {
             </ProjectList>
           </div>
           <div className="middlepane">
-            <h1
-              style={{
-                fontStyle: "italic",
-                fontWeight: "bold",
-                color: "black"
-              }}
-            >
-              Project Form
-            </h1>{" "}
-            <br />
+            <h1>Project Form</h1> <br />
             {/* \/ this form just needs a 'hidden' property to then be changed
                             to be able to change the rendered component onClick!!!! 
                         */}
