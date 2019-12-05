@@ -37,6 +37,7 @@ class Home extends Component {
   </Navbar>
 
             <h1>Home</h1>
+            <h3>The miniature project boss in your pocket</h3>
             <ul>
                 <Login />
                 <br/>
