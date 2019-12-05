@@ -60,9 +60,21 @@ class ProfileGrid extends React.Component {
       )
       .catch(err => console.log(err));
   };
+  handleButtonClick = btn => {};
   // method for hide form, show data
   toggleData = e => {
-    console.log(e.target);
+    //console.log(e.target)
+    //console.log(e.target.value)
+    console.log({ [Object]: e.target });
+    console.log({
+      [Object]: e.target.firstChild.data
+    });
+    this.setState({
+      btnPressed: {
+        [Object]: e.target.firstChild.data
+      }
+    });
+    console.log(this.state.btnPressed);
 
     //e.preventDefault()
     /** <? insert method to do another AXIOS call to collect the data
@@ -125,7 +137,7 @@ class ProfileGrid extends React.Component {
                   <button
                     className="btn-warning"
                     type="button"
-                    key={project.id}
+                    key={project._id}
                     value={project}
                     onClick={this.toggleData}
                   >
@@ -140,7 +152,7 @@ class ProfileGrid extends React.Component {
               style={{
                 fontStyle: "italic",
                 fontWeight: "bold",
-                color: "white"
+                color: "black"
               }}
             >
               Project Form
@@ -197,7 +209,7 @@ class ProfileGrid extends React.Component {
                   value={this.state.todos}
                   onChange={this.handleInputChange}
                   type="textarea"
-                  placeholder="Todo"
+                  placeholder="TODO"
                 />
               </Form.Group>
               <Form.Group controlId="formObjectives">
@@ -223,6 +235,7 @@ class ProfileGrid extends React.Component {
                 return (
                   <Route
                     path="/profile"
+                    key={detail._id}
                     render={() => <ProjectDetails props={detail} />}
                   />
                 );
