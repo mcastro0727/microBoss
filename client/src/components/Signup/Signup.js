@@ -60,7 +60,7 @@ class SignUp extends Component {
                   <h3>
                     {" "}
                     <button
-                      className="btn btn-success"
+                      className="btn btn-dark"
                       onClick={e => {
                         this.setState({ isClicked: true });
                       }}
@@ -107,7 +107,7 @@ class SignUp extends Component {
                           </a>
                         </button>
                       </form>
-                      <a href="/">Forget Password?</a>
+                      <a href="/">Forgot Password?</a>
                     </div>
                   </div>
                 </Jumbotron>

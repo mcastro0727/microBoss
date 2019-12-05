@@ -126,7 +126,8 @@ body {
   text-align: center;
 }
 
-.list {
+p {
+  font-family: "Libre Baskerville", serif;
 }
 
 .list input {
