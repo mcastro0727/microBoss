@@ -56,8 +56,6 @@ class Login extends Component {
     {
       if (this.state.isClicked === false)
         return (
-          <Container>
-            <Row>
               <Col size="md-6">
                 <Jumbotron>
                   <h3>
@@ -72,13 +70,9 @@ class Login extends Component {
                   </h3>
                 </Jumbotron>
               </Col>
-            </Row>
-          </Container>
         );
       else
         return (
-          <Container>
-            <Row>
               <Col size="md-6">
                 <Jumbotron>
                   <div className="wrapper">
@@ -115,8 +109,6 @@ class Login extends Component {
                   </div>
                 </Jumbotron>
               </Col>
-            </Row>
-          </Container>
         );
     }
   }
