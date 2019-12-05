@@ -225,7 +225,7 @@ class ProfileGrid extends React.Component {
     }
 }
 export default ProfileGrid
-Collapse
+
 
 
 
