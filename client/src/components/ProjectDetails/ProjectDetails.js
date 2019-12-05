@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 
 
-const ProjectDetails = ({ title, creator, startDate, deadLine, todos, assignee }) => {
+const ProjectDetails = ({ title, creator, startDate, deadLine, notes, assignee }) => {
     //console.log(detail)
     //console.log(key)
    
@@ -17,7 +17,7 @@ const ProjectDetails = ({ title, creator, startDate, deadLine, todos, assignee }
         <p>Project Creator:: {creator}</p>
         <p>Initial Start Date:: {startDate}</p>
         <p>Deadline:: {deadLine}</p>
-        <p>Project Notes:: {todos}</p>
+        <p>Project Notes:: {notes}</p>
         <p>Who's working on this?? {assignee}</p>
         </>
     )
