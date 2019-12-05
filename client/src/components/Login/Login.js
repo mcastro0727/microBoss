@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import { Col, Row, Container } from "../components/Grid";
-// import Jumbotron from "../components/Jumbotron";
+import { Col, Row, Container } from "../Grid/index";
+import Jumbotron from "../Jumbotron/index";
 import axios from "axios";
 class Login extends Component {
   constructor() {
@@ -56,107 +56,67 @@ class Login extends Component {
     {
       if (this.state.isClicked === false)
         return (
-          // <Container>
-          //   <Row>
-          //     <Col size="md-6">
-          //       <Jumbotron>
-          //         <h2>
-          //           <button
-          //             onClick={e => {
-          //               this.setState({ isClicked: true });
-          //             }}
-          //           >
-          //             Login
-          //           </button>
-          //         </h2>
-          //       </Jumbotron>
-          //     </Col>
-          //   </Row>
-          // </Container>
-          <div className="level">
-            <div className="column is-half">
-              <div className="notification is-primary">
-                <h2>
-                  {" "}
-                  <button
-                    className="button is-success"
-                    onClick={e => {
-                      this.setState({ isClicked: true });
-                    }}
-                  >
-                    Login
-                  </button>
-                </h2>
-              </div>
-            </div>
-          </div>
+          <Container>
+            <Row>
+              <Col size="md-6">
+                <Jumbotron>
+                  <h3>
+                    <button
+                      className="btn btn-success"
+                      onClick={e => {
+                        this.setState({ isClicked: true });
+                      }}
+                    >
+                      <p>Login</p>
+                    </button>
+                  </h3>
+                </Jumbotron>
+              </Col>
+            </Row>
+          </Container>
         );
       else
         return (
-          // <Container>
-          //   <Row>
-          //     <Col size="md-6">
-          //       <Jumbotron>
-          //         <div className="wrapper">
-          //           <div className="form-wrapper">
-          //             <h1>Login</h1>
-          //             <form onSubmit={this.handleSubmit} noValidate>
-          //               <label htmlFor="Email">Email</label>
-          //               <input
-          //                 type="text"
-          //                 className=""
-          //                 id="Email"
-          //                 placeholder=" Your Email Here"
-          //                 name="email"
-          //               />
-          //               <div>
-          //                 <label htmlFor="Password">Password</label>
-          //                 <input
-          //                   type="text"
-          //                   className=""
-          //                   id="Password"
-          //                   placeholder=" Password"
-          //                   name="email"
-          //                 />
-          //               </div>
-          //               <a href="">Confirm</a>
-          //             </form>
-          //           </div>
-          //         </div>
-          //       </Jumbotron>
-          //     </Col>
-          //   </Row>
-          // </Container>
-          <div className="columns">
-            <div className="column is-half" padding="50px">
-              <div className="field">
-                <div className="notification is-primary" style={signUpBox}>
-                  <label className="labelFor">Email</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type="text"
-                      placeholder="First and Last Name"
-                    ></input>
-                  </div>
-
-                  <div className="column is-half">
-                    <div className="field">
-                      <label className="labelFor">Password</label>
-                      <div className="control">
+          <Container>
+            <Row>
+              <Col size="md-6">
+                <Jumbotron>
+                  <div className="wrapper">
+                    <div className="list">
+                      <h5>Login</h5>
+                      <form onSubmit={this.handleSubmit} noValidate>
+                        <label htmlFor="Email"></label>
                         <input
-                          className="input"
-                          type="password"
-                          placeholder="Email"
-                        ></input>
-                        <a href="">Confirm</a>
-                      </div>
+                          className="info"
+                          type="text"
+                          className=""
+                          id="Email"
+                          placeholder=" Your Email Here"
+                          name="email"
+                        />
+                        <div className="list">
+                          <label htmlFor="Password"></label>
+                          <input
+                            type="password"
+                            className=""
+                            id="Password"
+                            placeholder=" Password"
+                            name="email"
+                          />
+                        </div>
+                        <button className="btn btn-primary">
+                          <a href="/profile" style={{ color: "white" }}>
+                            Confirm
+                          </a>
+                        </button>
+                      </form>
+                      <a href="">Forget Password?</a>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                </Jumbotron>
+              </Col>
+            </Row>
+          </Container>
         );
     }
   }

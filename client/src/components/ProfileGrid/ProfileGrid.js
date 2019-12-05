@@ -8,16 +8,12 @@ import { Form, Button } from 'react-bootstrap'
 import ProjectDetails from '../ProjectDetails'
 import { ProjectList } from '../ProjList'
 import { Route } from 'react-router-dom'
-
-
 class ProfileGrid extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {
             userProjects: [],
             clickedPDBtn: true,
-            btnPressed: '',
             projectTitle: '',
             creator: '',
             startDate: '',
@@ -27,22 +23,18 @@ class ProfileGrid extends React.Component {
             clickedFBtn: true
         }
         console.log(props)
-
     }
-
     handleInputChange = (e) => {
         const { name, value } = e.target;
         this.setState({
             [name]: value
         });
     };
-
     // handleFormSubmit
     handleFormSubmit = (e) => {
         e.preventDefault();
         this.setState({ projects: [] });
         console.log(this.state);
-
         API.saveProject({
             projectTitle: this.state.projectTitle,
             creator: this.state.creator,
@@ -51,23 +43,15 @@ class ProfileGrid extends React.Component {
             todos: this.state.todos,
             assignee: this.state.assignee
         })
-
             .then(obj => console.log(obj))
             .catch(err => console.log(err));
-
         window.location.reload();
     };
-
-
-
     componentDidMount() {
-
         this.getProjects();
         console.log(this.state.userProjects)
     }
-
     getProjects = () => {
-
         API.getProjects()
             .then(e =>
                 this.setState({
@@ -75,40 +59,32 @@ class ProfileGrid extends React.Component {
                 })
             )
             .catch(err => console.log(err));
-
     }
-
     handleButtonClick = (btn) => {
-        console.log(btn.target)
-        console.log({ [Object]: btn.target })
-        const btnTxt = btn.target.firstChild.data
-        const detObj = {
-            [Object]: btnTxt
-        }
-        console.log(detObj)
-
-        this.setState({
-            btnPressed: detObj
-            
-        })
-        console.log(this.state.btnPressed)
         
     } 
-
-
     // method for hide form, show data
     toggleData = (e) => {
         //console.log(e.target)
         //console.log(e.target.value)
-        this.handleButtonClick(e)
-       
+        console.log({ [Object]:e.target })
+        console.log({
+            [Object]: e.target.firstChild.data
+        })
+        this.setState({
+            btnPressed: {
+                [Object]: e.target.firstChild.data 
+            } 
+            
+        })
+        console.log(this.state.btnPressed)
+        
         
         //e.preventDefault()
         /** <? insert method to do another AXIOS call to collect the data 
          * in THIS specific function ?> */
         API.getProjects()
             .then(res => console.log(res.data))
-
         this.setState({
             clickedPDBtn: false,
             clickedFBtn: true
@@ -116,11 +92,9 @@ class ProfileGrid extends React.Component {
         console.log(this.state.clickedFBtn);
         console.log(this.state.clickedPDBtn)
     }
-
     // showData =(resp) => {
     //     console.log(resp.data)
     // }
-
     // method for hide data, show form
     toggleForm = () => {
         this.setState({
@@ -130,22 +104,13 @@ class ProfileGrid extends React.Component {
         console.log(this.state.clickedFBtn);
         console.log(this.state.clickedPDBtn)
     }
-
-
-
     render() {
         const projects = this.state.userProjects;
         //console.log(projects);
-
         const detailBtn = this.state.clickedPDBtn;
         const formBtn = this.state.clickedFBtn;
-
         console.log(`constructedSTATE:DATA-------\n\nshow_ProjectDetail: ${detailBtn}\n--------\n\nshow_Form: ${formBtn}`)
-
         
-
-
-
         return (
             <React.Fragment>
                 <Container>
@@ -171,7 +136,6 @@ class ProfileGrid extends React.Component {
                             })}
                         </ProjectList>
                     </div>
-
                     <div className="middlepane">
                         <h1 style={{ fontStyle: "italic", fontWeight: "bold", color: "black" }}>Project Form</h1> <br />
                         {/* \/ this form just needs a 'hidden' property to then be changed
@@ -188,7 +152,6 @@ class ProfileGrid extends React.Component {
                                     placeholder="Enter username"
                                 />
                             </Form.Group>
-
                             <Form.Group controlId="formProjectTitle">
                                 <Form.Label>Project Name</Form.Label>
                                 <Form.Control
@@ -199,7 +162,6 @@ class ProfileGrid extends React.Component {
                                     placeholder="What are you working on?"
                                 />
                             </Form.Group>
-
                             <Form.Group controlId="formStartDate">
                                 <Form.Label>Start Date</Form.Label>
                                 <Form.Control
@@ -210,7 +172,6 @@ class ProfileGrid extends React.Component {
                                     placeholder="When was this assigned?"
                                 />
                             </Form.Group>
-
                             <Form.Group controlId="formDeadLine">
                                 <Form.Label>Deadline</Form.Label>
                                 <Form.Control
@@ -221,7 +182,6 @@ class ProfileGrid extends React.Component {
                                     placeholder="When is this to be completed by?"
                                 />
                             </Form.Group>
-
                             <Form.Group controlId="formObjectives">
                                 <Form.Label>Task at Hand</Form.Label>
                                 <Form.Control
@@ -231,9 +191,7 @@ class ProfileGrid extends React.Component {
                                     type="textarea"
                                     placeholder="TODO"
                                 />
-
                             </Form.Group>
-
                             <Form.Group controlId="formObjectives">
                                 <Form.Label>Assignee</Form.Label>
                                 <Form.Control
@@ -243,17 +201,13 @@ class ProfileGrid extends React.Component {
                                     type="text"
                                     placeholder="Who's doing this task?"
                                 />
-
                             </Form.Group>
-
                             <Button variant="primary" type="submit" onClick={this.handleFormSubmit} >
                                 Submit
                 </Button>
                         </Form>
-
                         <div className="details" hidden={detailBtn} >
                             
-
                             {projects.map((detail) => {
                                 return (
                                     <Route
@@ -263,19 +217,32 @@ class ProfileGrid extends React.Component {
                                      />
                                 )
                             })}
-
                         </div>
-
                     </div>
-
-
                 </Container>
             </React.Fragment>
         )
     }
 }
-
-
 export default ProfileGrid
+Collapse
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
