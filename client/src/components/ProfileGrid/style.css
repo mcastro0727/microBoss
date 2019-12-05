@@ -34,7 +34,7 @@ body {
 .middlepane {
   width: 50%;
   min-width: 722px;
-  height: available;
+  height: 400px;
   min-height: 650px;
   margin-top: 50px;
   float: left;
@@ -45,6 +45,13 @@ body {
   color: white;
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #000;
+  overflow: auto;
+}
+
+.middlepane form {
+  width: 500px;
+  text-align: center;
+  margin: auto;
 }
 
 .rightpane {
@@ -55,4 +62,11 @@ body {
   margin-left: 78.8%;
   background-color: yellow;
   border-collapse: collapse;
+}
+
+button {
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #000;
+  margin: 5px;
+  font-family: "Libre Baskerville", serif;
 }
