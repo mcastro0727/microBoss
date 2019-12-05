@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 
-<<<<<<< HEAD
+
 const ProjectDetails = ({ title, creator, startDate, deadLine, todos, assignee }) => {
     //console.log(detail)
     //console.log(key)
